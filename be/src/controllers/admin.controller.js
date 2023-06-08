@@ -1,3 +1,4 @@
+require('dotenv').config();
 const userService = require('../services/user.service');
 const { PREFIX_CODE } = require('../constants/variables');
 const { newCode } = require('../utils/employee-code.utils');
@@ -16,13 +17,16 @@ class AdminController {
         { sort: { createdAt: -1 } }
       );
       let latestCode = '000000';
-      if(latestUser) {
-        latestCode = latestUser.code.substring(3);
+      if (latestUser) {
+        latestCode = latestUser.code.substring(4);
       }
       const newUser = await userService.createOne({
         ...req.body,
-        code: PREFIX_CODE + newCode(latestCode)
+        password: process.env.DEFAULT_PASSWORD,
+        code: PREFIX_CODE + newCode(latestCode),
       });
+
+      newUser.password = process.env.DEFAULT_PASSWORD;
       res.status(201).json(newUser);
     } catch (error) {
       res.status(500).send(error);

@@ -1,14 +1,25 @@
-import React from 'react'
-import './App.css'
-import Layout from '@components/layouts'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { authRoutes, userRoutes } from './routes';
+import UserLayout from './components/layouts';
 
 function App() {
-
   return (
-    <div className='App'>
-      <Layout />
-    </div>
-  )
+    <>
+      <Routes>
+        {authRoutes.map((authRoute, index) => (
+          <Route key={index} path={authRoute.path} element={authRoute.page} />
+        ))}
+
+        <Route element={<UserLayout />}>
+          {userRoutes.map((userRoute, index) => (
+            <Route key={index} path={userRoute.path} element={userRoute.page} />
+          ))}
+        </Route>
+        <div className="overlay-app"></div>
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;

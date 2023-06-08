@@ -10,6 +10,7 @@ const userSchema = new Schema(
     username: { type: String, unique: true, required: true, indexed: true },
     password: { type: String, required: true},
     name: { type: String, required: true, indexed: true },
+    citizenId: { type: String, indexed: true },
     gender: { type: String, required: true, indexed: true },
     avatar: { type: String, default: DEFAULT_AVATAR },
     info: { type: Schema.Types.Mixed },

@@ -3,8 +3,9 @@ const router = express.Router();
 const authRoutes = require('./auth');
 const adminRoutes = require('./admin');
 const patientRoutes = require('./patient');
-const healthRecordRoutes = require('./health-record');
 const testResultRoutes = require('./test-result');
+const healthRecordRoutes = require('./health-record');
+const employeeRoute = require('./employee');
 
 const defaultRoutes = [
   {
@@ -26,7 +27,11 @@ const defaultRoutes = [
   {
     path: '/test-results',
     routes: testResultRoutes
-  }
+  },
+  {
+    path: '/employees',
+    routes: employeeRoute
+  },
 ];
 
 defaultRoutes.forEach((item) => router.use(item.path, item.routes));

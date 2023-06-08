@@ -1,7 +1,6 @@
 const { User } = require('../models');
 
 class UserService {
-  
   createOne(data) {
     return User.create(data);
   }
@@ -10,6 +9,9 @@ class UserService {
     return User.findOne(data, {}, options);
   }
 
+  find(conditions = {}, options = {}) {
+    return User.find(conditions, options).select('-password');
+  }
 }
 
 module.exports = new UserService();
