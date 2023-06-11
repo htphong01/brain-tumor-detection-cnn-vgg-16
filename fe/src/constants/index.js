@@ -8,8 +8,8 @@ export const sideBarMenu = [
     link: '/patients'
   },
   {
-    title: 'Diagnosis',
-    link: '/diagnosis'
+    title: 'Health Record',
+    link: '/health-records'
   },
   {
     title: 'Employees',
@@ -26,5 +26,10 @@ export const GENDERS = {
   MALE: 'Male',
   FEMALE: 'Female',
   OTHER: 'Other'
+}
+
+export const MODAL_TYPES = {
+  VIEW: 'view',
+  EDIT: 'edit'
 }
  

@@ -5,7 +5,11 @@ class PatientController {
 
   async index(req, res) {
     try {
-      const patients = await patientService.findMany();
+      const conditions = {};
+      const { citizenId } = req.query;
+      if(citizenId) conditions.citizenId = citizenId;
+
+      const patients = await patientService.findMany(conditions);
       res.json(patients);
     } catch (error) {
       res.status(500).send();
@@ -21,7 +25,7 @@ class PatientController {
   async create(req, res) {
     try {
       const isExisted = await patientService.isExisted({
-        idCard: req.body.idCard,
+        citizenId: req.body.citizenId,
       });
       if (isExisted) {
         return res.status(409).send(MESSAGES.PATIENT_EXISTED);

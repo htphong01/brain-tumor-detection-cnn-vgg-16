@@ -12,10 +12,13 @@ class UserController {
    */
   async index(req, res) {
     try {
-      
-      const users = await userService.find();
+      const conditions = {}
+      const { role } = req.query;
+      if(role) conditions.role = role;
+      const users = await userService.find(conditions);
       res.status(200).json(users);
     } catch (error) {
+      console.log(error);
       res.status(500).send(error);
     }
   }

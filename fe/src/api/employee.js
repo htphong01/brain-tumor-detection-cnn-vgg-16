@@ -1,5 +1,7 @@
-import axios from './axiosClient';
+import axios from "./axiosClient";
 
-export const getAllEmployee = () => {
-  return axios.get('/employees')
-}
+export const getAllEmployee = (params = {}) => {
+  return axios.get("/employees", {
+    params,
+  });
+};

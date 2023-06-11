@@ -665,6 +665,11 @@ body.light-mode .video-bg:before {
   font-size: 15px;
   position: relative;
 }
+
+.status.w-10 {
+  width: 10%;
+}
+
 @media screen and (max-width: 700px) {
   .status {
     display: none;
@@ -676,6 +681,8 @@ body.light-mode .video-bg:before {
   font-size: 15px;
   position: relative;
   text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .status-button {
@@ -700,6 +707,18 @@ body.light-mode .video-bg:before {
 
 .content-button:not(.open):hover {
   background: #1e59f1;
+}
+
+.content-search-input {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: none;
+  padding: 6px 24px;
+  color: #fff;
+  width: 300px;
+  border-radius: 30px;
+  font-size: 15px;
+  transition: all ease 0.5s;
 }
 
 .menu {
@@ -1024,7 +1043,7 @@ body.light-mode .video-bg:before {
   color: #000;
 }
 
-div[class^='_loading'] {
+div[class^="_loading"] {
   z-index: 99;
 }
 

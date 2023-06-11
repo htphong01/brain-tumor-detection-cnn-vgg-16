@@ -2,8 +2,8 @@ const { Patient } = require('../models');
 
 class PatientService {
 
-  findMany(data = {}, options = {}) {
-    return Patient.find(data, options);
+  findMany(conditions = {}, options = {}) {
+    return Patient.find(conditions, options).sort([['createdAt', '-1']]);
   }
 
   isExisted(data) {
