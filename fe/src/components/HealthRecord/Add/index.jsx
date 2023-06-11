@@ -28,7 +28,7 @@ export default function Add({
   const handleGetOutput = async () => {
     try {
       setIsLoading(true);
-      const [res1, res2] = Promise.all([
+      const [res1, res2] = await Promise.all([
         uploadImageToCloud(selectedFile),
         getVggOutput(selectedFile),
       ]);
@@ -83,8 +83,12 @@ export default function Add({
                   required
                   hidden
                 />
-                {selectedFile && (
-                  <img src={URL.createObjectURL(selectedFile)} />
+                {type === MODAL_TYPES.EDIT ? (
+                  selectedFile && (
+                    <img src={URL.createObjectURL(selectedFile)} />
+                  )
+                ) : (
+                  <img src={selectedHealthRecord.testResult[0].input} />
                 )}
               </label>
             </div>
@@ -94,12 +98,21 @@ export default function Add({
             <div className={styles.inputControl}>
               <label className={styles.inputTitle}>
                 Output:{" "}
-                {testResult.output && (
-                  <span>{testResult.isPositive ? "Positive" : "Negative"}</span>
+                {type === MODAL_TYPES.EDIT ? (
+                  testResult.output && (
+                    <span>
+                      {testResult.isPositive ? "Positive" : "Negative"}
+                    </span>
+                  )
+                ) : (
+                  <span>
+                    {selectedHealthRecord.testResult[0].isPositive ? "Positive" : "Negative"}
+                  </span>
                 )}
+                {}
               </label>
               <label
-                className={`${styles.inputLabel}  ${
+                className={`${styles.inputLabel} ${
                   testResult.output
                     ? testResult.isPositive
                       ? styles.positive
@@ -107,8 +120,12 @@ export default function Add({
                     : ""
                 }`}
               >
-                {testResult.output && (
-                  <img src={URL.createObjectURL(selectedFile)} />
+                {type === MODAL_TYPES.EDIT ? (
+                  testResult.output && (
+                    <img src={URL.createObjectURL(selectedFile)} />
+                  )
+                ) : (
+                  <img src={selectedHealthRecord.testResult[0].output} />
                 )}
               </label>
             </div>

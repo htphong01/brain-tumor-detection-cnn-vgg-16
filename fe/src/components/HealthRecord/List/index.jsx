@@ -33,7 +33,7 @@ function List({ list, handleRecord }) {
             <Icon
               icon="material-symbols:info"
               fontSize={20}
-              onClick={() => handleRecord(MODAL_TYPES.VIEW)}
+              onClick={() => handleRecord(MODAL_TYPES.VIEW, item)}
             />
           </span>
         </li>
