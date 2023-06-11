@@ -28,7 +28,7 @@ export default function Add({
   const handleGetOutput = async () => {
     try {
       setIsLoading(true);
-      const [res1, res2] = Promise.all([
+      const [res1, res2] = await Promise.all([
         uploadImageToCloud(selectedFile),
         getVggOutput(selectedFile),
       ]);
