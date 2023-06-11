@@ -1,5 +1,5 @@
 import DashboardPage from "../pages/Dashboard";
-import DiagnosisPage from "../pages/Diagnosis";
+import HealthRecordPage from "../pages/HealthRecord";
 import PatientsPage from "../pages/Patients";
 import EmployeesPage from "../pages/Employees";
 import LoginPage from "../pages/Login";
@@ -15,8 +15,8 @@ export const userRoutes = [
         element: <DashboardPage />,
       },
       {
-        path: "/diagnosis",
-        element: <DiagnosisPage />,
+        path: "/health-records",
+        element: <HealthRecordPage />,
       },
       {
         path: "/patients",

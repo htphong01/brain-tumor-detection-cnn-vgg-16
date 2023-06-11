@@ -5,6 +5,8 @@ const healthRecordSchema = new Schema(
   {
     patient: { type: Schema.Types.ObjectId, ref: 'Patient', require: true },
     doctor: { type: Schema.Types.ObjectId, ref: 'User', require: true },
+    department: { type: String },
+    symptoms: { type: String },
     testResult: [{ type: Schema.Types.ObjectId, 'ref': 'TestResult' }],
     info: { type: Schema.Types.Mixed },
   },

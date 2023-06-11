@@ -1,5 +1,6 @@
-import React from 'react';
+import Patients from '@components/Patients';
 
 export default function PatientsPage() {
-  return <></>;
+
+  return <Patients />;
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import ListEmployee from "./List";
 import AddEmployee from "./Add";
-import { convertArrayToObject } from "@utils";
 import ReactLoading from "react-loading";
 import { addUser } from "@api/admin";
 import { getAllEmployee } from "@api/employee";
@@ -16,7 +15,7 @@ function Employees() {
     try {
       setIsLoading(true);
       const { data } = await addUser(userData);
-      setListEmployee([...listEmployee, data]);
+      setListEmployee([data, ...listEmployee]);
       setIsOpenAdd(false);
       setIsLoading(false);
       toast.success("Add new employee successful");

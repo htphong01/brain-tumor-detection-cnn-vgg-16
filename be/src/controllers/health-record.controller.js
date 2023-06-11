@@ -4,7 +4,6 @@ const patientService = require('../services/patient.service');
 const { MESSAGES } = require('../constants/variables');
 
 class HealthRecordController {
-
   async index(req, res) {
     try {
       const healthRecords = await healthRecordService.findMany();
@@ -21,27 +20,8 @@ class HealthRecordController {
    */
   async create(req, res) {
     try {
-      const { testResult: inputTestResult,...rest } = req.body;
-      const patient = await patientService.findOne({ idCard: req.body.patient });
-      rest.patient = patient._id;
-      const medical = await healthRecordService.createOne(rest);
-      const oldMedical = await healthRecordService.findOne({ _id: medical._id });
-
-      const testResult = [];
-      if (inputTestResult) {
-        const createdTestResult = await testResultService.createOne({
-          healthRecord: medical._id,
-          ...inputTestResult,
-        });
-
-        testResult.push(createdTestResult._id);
-      }
-
-      const newRecord = await healthRecordService.updateById(medical._id, {
-        testResult,
-      });
+      const newRecord = await healthRecordService.createOne(req.body);
       res.json(newRecord);
-
     } catch (error) {
       res.status(500).send();
     }
@@ -98,8 +78,8 @@ class HealthRecordController {
    */
   async update(req, res) {
     try {
-      const recordId = req.params.recordId;
-      const oldMedical = await healthRecordService.findOne({ _id: recordId });
+      const healthRecord = req.params.healthRecord;
+      const oldMedical = await healthRecordService.findOne({ _id: healthRecord });
       if (!oldMedical) {
         return res.status(404).send(MESSAGES.RECORD_NOT_EXIST);
       }

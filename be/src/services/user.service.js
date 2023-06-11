@@ -10,7 +10,7 @@ class UserService {
   }
 
   find(conditions = {}, options = {}) {
-    return User.find(conditions, options).select('-password');
+    return User.find(conditions, options).sort([['createdAt', '-1']]).select('-password');
   }
 }
 
