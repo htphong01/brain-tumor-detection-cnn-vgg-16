@@ -1,0 +1,26 @@
+.container {
+  flex: 1;
+  padding: 20px 40px;
+  overflow-y: scroll;
+
+  .full-width {
+    margin-top: 40px;
+    width: 100%;
+    padding: 20px 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+  }
+
+  .chart-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    .chart-section {
+      width: 50%;
+      padding: 20px 12px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+  }
+}

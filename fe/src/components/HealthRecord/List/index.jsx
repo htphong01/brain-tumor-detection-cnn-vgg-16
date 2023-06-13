@@ -24,17 +24,19 @@ function List({ list, handleRecord }) {
             {new Date(item.createdAt).toDateString()}
           </span>
           <span className="action">
-            <Icon
-              icon="mdi:add-bold"
-              fontSize={20}
-              onClick={() => handleRecord(MODAL_TYPES.EDIT, item)}
-            />
-
-            <Icon
-              icon="material-symbols:info"
-              fontSize={20}
-              onClick={() => handleRecord(MODAL_TYPES.VIEW, item)}
-            />
+            {item.testResult.length === 0 ? (
+              <Icon
+                icon="mdi:add-bold"
+                fontSize={20}
+                onClick={() => handleRecord(MODAL_TYPES.EDIT, item)}
+              />
+            ) : (
+              <Icon
+                icon="material-symbols:info"
+                fontSize={20}
+                onClick={() => handleRecord(MODAL_TYPES.VIEW, item)}
+              />
+            )}
           </span>
         </li>
       ))}

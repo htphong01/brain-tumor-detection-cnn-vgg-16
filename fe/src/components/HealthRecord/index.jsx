@@ -30,6 +30,7 @@ function Employees() {
       setIsLoading(true);
       await addNewTestResult(data);
       setIsLoading(false);
+      await fetchHealthRecord();
       toast.success("Add new test result successful");
     } catch (error) {
       setIsLoading(false);
