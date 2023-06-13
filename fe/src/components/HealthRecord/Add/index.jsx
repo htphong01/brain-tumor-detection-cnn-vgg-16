@@ -23,6 +23,7 @@ export default function Add({
 
   const handleChangeFile = (e) => {
     setSelectedFile(e.target.files[0]);
+    setTestResult({ ...testResult, output: "" });
   };
 
   const handleGetOutput = async () => {
@@ -106,7 +107,9 @@ export default function Add({
                   )
                 ) : (
                   <span>
-                    {selectedHealthRecord.testResult[0].isPositive ? "Positive" : "Negative"}
+                    {selectedHealthRecord.testResult[0].isPositive
+                      ? "Positive"
+                      : "Negative"}
                   </span>
                 )}
                 {}

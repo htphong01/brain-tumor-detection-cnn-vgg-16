@@ -31,6 +31,10 @@ function Employees() {
       await addNewTestResult(data);
       setIsLoading(false);
       await fetchHealthRecord();
+      setIsOpenAdd({
+        type: "",
+        state: true,
+      });
       toast.success("Add new test result successful");
     } catch (error) {
       setIsLoading(false);
